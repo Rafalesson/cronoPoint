@@ -1,7 +1,7 @@
 import React from "react";
 import "./header.css"
-import menuHamburger from '/cronoPoint/src/assets/img/menu-m.svg';
-import avatarPerfil from '/cronoPoint/src/assets/img/Avatars_Pack/Svg/Artboards_Diversity_Avatars_by_Netguru-10.svg';
+import menuHamburger from "../../assets/img/menu-m.svg";
+import avatarPerfil from '../../assets/img/Avatars_Pack/Svg/Artboards_Diversity_Avatars_by_Netguru-10.svg';
 
 
 export default function Header(){

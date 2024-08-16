@@ -1,7 +1,7 @@
 import React from "react";
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import circleQuestion from "/cronoPoint/src/assets/img/question-circle-m.svg"
+import circleQuestion from "../../assets/img/question-circle-m.svg"
 import "./boasVindas.css"
 
 const capitalizarPrimeiraLetra = (string) => {

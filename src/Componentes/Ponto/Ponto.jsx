@@ -1,5 +1,5 @@
 import React from "react";
-import power from "/cronoPoint/src/assets/img/power-r.svg"
+import power from "../../assets/img/power-r.svg"
 import "./ponto.css"
 
 export default function Ponto(){
