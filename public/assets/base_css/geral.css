@@ -17,4 +17,5 @@ html{
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  overflow: hidden;
 }
