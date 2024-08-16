@@ -34,7 +34,7 @@ export default function BoasVindas() {
         <p id="sobreEmpresaNome">Softex</p>
         <button id="sobreEmpresaBtn">
           <img
-            src="/src/assets/img/question-circle-m.svg"
+            src="public/assets/img/question-circle-m.svg"
             alt="Ícone de interrogação"
             id="sobreEmpresaIcon"
           />

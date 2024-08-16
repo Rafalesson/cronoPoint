@@ -6,8 +6,8 @@ function App() {
  
   return (
     <>
-      {/* <FuncionarioDashboard /> */}
-      <Login />
+      <FuncionarioDashboard />
+      {/* <Login /> */}
     </>
   )
 }
