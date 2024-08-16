@@ -46,7 +46,7 @@
 .sobreEmpresa{
   display: flex;
   width: 100%;
-  height: 8rem;
+  height: 8vh;
   align-items: center;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
