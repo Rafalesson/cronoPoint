@@ -1,7 +1,8 @@
 import React from "react";
 import "./header.css"
-import meunuHamburger from "/cronoPoint/public/assets/img/menu-m.svg"
-import avatarPerfil from "/cronoPoint/public/assets/img/Avatars_Pack/Svg/Artboards_Diversity_Avatars_by_Netguru-10.svg"
+import menuHamburger from '/cronoPoint/src/assets/img/menu-m.svg';
+import avatarPerfil from '/cronoPoint/src/assets/img/Avatars_Pack/Svg/Artboards_Diversity_Avatars_by_Netguru-10.svg';
+
 
 export default function Header(){
 
@@ -9,7 +10,7 @@ export default function Header(){
       <header className="cabecalho">
         <nav className="cabecalhoNav">
           <button className="menuHamburguer">
-          <img src={meunuHamburger} alt="Menu habúrguer" className="menuHamburguerIcon" />
+          <img src={menuHamburger} alt="Menu habúrguer" className="menuHamburguerIcon" />
 
           </button>
 

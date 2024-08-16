@@ -1,6 +1,7 @@
 import React from "react";
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import circleQuestion from "/cronoPoint/src/assets/img/question-circle-m.svg"
 import "./boasVindas.css"
 
 const capitalizarPrimeiraLetra = (string) => {
@@ -34,7 +35,7 @@ export default function BoasVindas() {
         <p id="sobreEmpresaNome">Softex</p>
         <button id="sobreEmpresaBtn">
           <img
-            src="/cronoPoint/public/assets/img/question-circle-m.svg"
+            src={circleQuestion}
             alt="Ícone de interrogação"
             id="sobreEmpresaIcon"
           />
