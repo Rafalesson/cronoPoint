@@ -1,0 +1,12 @@
+#footer{
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2rem  0;
+}
+
+#dbsnoop{
+  color: var(--blue-primary);
+  font-weight: 600;
+}

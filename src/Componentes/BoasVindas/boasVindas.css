@@ -1,0 +1,71 @@
+.boas_vindas{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  height: 25vh;
+  background-color: var(--blue-primary);
+  border-radius: 0% 0% 50% 50%;
+  color: var(--white-background);
+  font-family: "Roboto", sans-serif;
+}
+
+.saudacoes{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#bomDia{
+  font-size: 2rem;
+}
+
+#funcionario{
+  font-size: 2.5rem;
+  padding: .5rem;
+}
+
+.dataHora{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#horaAtual{
+  font-size: 6rem;
+  font-weight: 600;
+}
+
+#dataAtual{
+  padding-top: .5rem;
+  font-size: 1.8rem;
+}
+
+.sobreEmpresa{
+  display: flex;
+  width: 100%;
+  height: 7rem;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  padding-left: 3rem;
+}
+
+#sobreEmpresaNome{
+  font-size: 2.2rem;
+
+}
+
+#sobreEmpresaBtn{
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+}
+
+#sobreEmpresaIcon{
+  width: 3rem;
+  height: 3rem;
+  padding-top: .7rem;
+}
