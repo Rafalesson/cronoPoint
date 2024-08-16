@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "../../Componentes/Footer/Footer"
+import Footer from "../../Componentes/Footer/Footer";
 import "./login.css"
 
 
@@ -9,9 +9,9 @@ export default function Login(){
   return(
     <senction id="login">
       <div id="containerImg">
-        <img src="/cronoPoint/src/assets/img/people_working_pack/SVG/character 3.svg" alt="Mulher com lupa" className="loginImg" id="loginImg1"/>
+        <img src="/cronoPoint/src/assets/img/people_working_pack/SVG/character3.svg" alt="Mulher com lupa" className="loginImg" id="loginImg1"/>
 
-        <img src="/cronoPoint/src/assets/img/people_working_pack/SVG/character 16.svg" alt="Homem no computador" className="loginImg" id="loginImg2"/>
+        <img src="/cronoPoint/src/assets/img/people_working_pack/SVG/character16.svg" alt="Homem no computador" className="loginImg" id="loginImg2"/>
       </div>
 
       <form action="/login" id="loginForm">
