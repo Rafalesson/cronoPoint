@@ -9,9 +9,9 @@ export default function Login(){
   return(
     <senction id="login">
       <div id="containerImg">
-        <img src="/src/assets/img/people_working_pack/SVG/character 3.svg" alt="Mulher com lupa" className="loginImg" id="loginImg1"/>
+        <img src="/cronoPoint/src/assets/img/people_working_pack/SVG/character 3.svg" alt="Mulher com lupa" className="loginImg" id="loginImg1"/>
 
-        <img src="/src/assets/img/people_working_pack/SVG/character 16.svg" alt="Homem no computador" className="loginImg" id="loginImg2"/>
+        <img src="/cronoPoint/src/assets/img/people_working_pack/SVG/character 16.svg" alt="Homem no computador" className="loginImg" id="loginImg2"/>
       </div>
 
       <form action="/login" id="loginForm">
@@ -37,11 +37,11 @@ export default function Login(){
         <button type="submit" className="btn" id="entrar">Entrar</button>
 
         <div id="divisaoBtn">
-          <img src="/src/assets/img/line.svg" alt="Apenas uma linha" />
+          <img src="/cronoPoint/src/assets/img/line.svg" alt="Apenas uma linha" />
 
           <span>Ou</span>
 
-          <img src="/src/assets/img/line.svg" alt="Apenas uma linha" />
+          <img src="/cronoPoint/src/assets/img/line.svg" alt="Apenas uma linha" />
         </div>
 
         <button type="submit" className="btn" id="cadastrar">Cadastrar</button>

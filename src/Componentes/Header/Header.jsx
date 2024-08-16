@@ -7,7 +7,7 @@ export default function Header(){
       <header className="cabecalho">
         <nav className="cabecalhoNav">
           <button className="menuHamburguer">
-          <img src="/src/assets/img/menu-m.svg" alt="Menu habúrguer" className="menuHamburguerIcon" />
+          <img src="/cronoPoint/src/assets/img/menu-m.svg" alt="Menu habúrguer" className="menuHamburguerIcon" />
 
           </button>
 
@@ -16,7 +16,7 @@ export default function Header(){
           </h1>
 
           <button className="avatar">
-            <img src="/src/assets/img/Avatars_Pack/Svg/Artboards_Diversity_Avatars_by_Netguru-10.svg" alt="Avatar" className="avatarIcon" />
+            <img src="/cronoPoint/src/assets/img/Avatars_Pack/Svg/Artboards_Diversity_Avatars_by_Netguru-10.svg" alt="Avatar" className="avatarIcon" />
           </button>
         </nav>
       </header>
