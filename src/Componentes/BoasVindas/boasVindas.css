@@ -19,11 +19,11 @@
 }
 
 #bomDia{
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 #funcionario{
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   padding: .5rem;
 }
 
@@ -34,13 +34,13 @@
 }
 
 #horaAtual{
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: 600;
 }
 
 #dataAtual{
   padding-top: .5rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 .sobreEmpresa{
@@ -54,7 +54,7 @@
 }
 
 #sobreEmpresaNome{
-  font-size: 2.2rem;
+  font-size: 1.8rem;
 
 }
 
@@ -65,7 +65,7 @@
 }
 
 #sobreEmpresaIcon{
-  width: 3rem;
-  height: 3rem;
-  padding-top: .7rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding-top: .5rem;
 }

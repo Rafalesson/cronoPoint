@@ -10,29 +10,29 @@
   align-items: center;
   padding: 2rem;
   border-bottom: 1px solid var(--white-background);
-  height: 7vh;
+  height: 6vh;
 }
 
 .menuHamburguer{
-  width: 6rem;
-  height: 6rem;
+  width: 4.5rem;
+  height: 4.5rem;
 }
 
 .menuHamburguerIcon{
-  width: 6rem;
-  height: 6rem;
+  width: 4.5rem;
+  height: 4.5rem;
 }
 
 .cabecalhoTitulo{
   font-family: "Montserrat", sans-serif;
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-weight: 600;
   color: var(--white-background);
 }
 
 .avatar{
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   border: 1px solid var(--white-background);
   box-shadow: 1px 1px 2px var(--white-background);
