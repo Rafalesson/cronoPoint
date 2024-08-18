@@ -43,14 +43,14 @@
   flex-direction: column;
   gap: 1.5rem;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .solicitacoesItem{
   display: flex;
   width: 80%;
   height: 20%;
-  background-color: var(--white-background);
+  background-color: #fff;
   padding: 1rem;
   border-radius: 1rem;
   cursor: pointer;
@@ -63,15 +63,15 @@
 }
 
 #userIcon, #bancoIcon, #solicitacoesImg1, #solicitacoesImg2, #relatorioIcon, #sairIcon{
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 #listaSolicitacoes{
   display: flex;
   flex-direction: column;
   height: auto;
-  gap: .5rem;
+  gap: 1rem;
   color: var(--grey-neutral);
   font-family: "Roboto", sans-serif;
 }
@@ -90,7 +90,7 @@
 
 .solicitacoesText{
   font-family: "Roboto", sans-serif;
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 500;
   color: var(--black-text);
 }
@@ -113,6 +113,6 @@
 }
 
 .dsContainer span{
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 500;
 }
