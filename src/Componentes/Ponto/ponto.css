@@ -1,0 +1,34 @@
+.ponto{
+  display: flex;
+  justify-content: center;
+  margin: 3rem auto 0 auto;
+  background-color: var(--green-success);
+  border-radius: 50%;
+  width: 25rem;
+  height: 25rem;
+}
+
+#baterPonto{
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 22rem;
+  height: 22rem;
+  background-color: var(--white-background);
+  border-radius: 50%;
+}
+
+#baterPontoIcon{
+  width: 15rem;
+  height: 15rem;
+}
+
+#baterPontoText{
+  font-family: "Roboto", sans-serif;
+  font-size: 1.8rem;
+  color: var(--grey-neutral);
+  font-weight: 500;
+}

@@ -1,0 +1,128 @@
+#login{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--blue-primary);
+  height: 100vh;
+  justify-content: center;
+}
+
+#containerImg{
+  display: flex;
+  justify-content: center;
+  height: 18vh;
+  position: relative;
+}
+
+.loginImg{
+  width: 45%;
+
+}
+
+#loginImg1{
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+#loginImg2{
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+#loginForm{
+  height: 82vh;
+  background-color: var(--white-background);
+  border-radius: 2rem 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+#saudacao{
+  display: flex;
+  flex-direction: column;
+  font-size: 3rem;
+  margin-top: 12rem;
+  align-items: center;
+  gap: .5rem;
+}
+
+#saudacao strong{
+  color: var(--blue-primary);
+  font-weight: 500;
+}
+
+#formGroup1{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-top: 1rem;  
+}
+
+#formGroup1 label, #formGroup2 label{
+  font-size: 1.8rem;
+  padding: .5rem;
+}
+
+#email, #senha{
+  padding: 1.5rem 1rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+  outline: none;
+  box-shadow:  1px 1px 5px var(--black-text);
+}
+
+#formGroup2{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+#forgot{
+  align-self: flex-end;
+  margin-right: 2.5rem;
+  border-bottom: 1px solid var(--grey-neutral);
+  color: var(--grey-neutral);
+  font-size: 1.2rem;
+}
+
+.btn{
+  width: 90%;
+  height: 5rem;
+  background-color: var(--blue-primary);
+  color: var(--white-background);
+  border-radius: 1rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  box-shadow:  1px 1px 5px var(--black-text);
+}
+
+#entrar{
+  margin-top: 1rem;
+}
+
+#cadastrar{
+  background-color: var(--grey-neutral);
+}
+
+#divisaoBtn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 2.5rem;
+}
+
+#divisaoBtn img{
+  width: 45%;
+  height: 1rem;
+}
+
+#divisaoBtn span{
+  font-size: 1.8rem;
+}
+
+
