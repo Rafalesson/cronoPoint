@@ -16,6 +16,7 @@
 .menuHamburguer{
   width: 4.5rem;
   height: 4.5rem;
+  cursor: pointer;
 }
 
 .menuHamburguerIcon{
@@ -37,3 +38,32 @@
   border: 1px solid var(--white-background);
   box-shadow: 1px 1px 2px var(--white-background);
 }
+
+#menuLateralOverlay{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  overflow: hidden;
+}
+
+#menuLateral{
+  width: 70%;
+  height: 100%;
+  background-color: var(--white-background);
+  border-radius: 0 1rem 1rem 0;
+}
+
+#menuLateral img{
+  padding: 2rem;
+  cursor: pointer;
+}
+
+#cabecalhoML{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 6vh;
+  border-bottom: 1px solid black;
+}
+

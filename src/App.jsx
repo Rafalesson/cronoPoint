@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <FuncionarioDashboard />
-      <Login />
+      {/* <Login /> */}
     </>
   )
 }
