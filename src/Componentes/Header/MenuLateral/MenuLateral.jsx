@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ReactSVG } from 'react-svg';
-import "./MenuLateral.css";
+import "./menuLateral.css";
 
 import menuHamburgerPreto from "../../../assets/img/menu-m-preto.svg";
 import close from "../../../assets/img/close-m.svg";
