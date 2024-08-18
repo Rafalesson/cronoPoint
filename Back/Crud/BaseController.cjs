@@ -11,17 +11,14 @@ class GenericController {
         this.tableName = tableName;
     }
 
-
     handleError(res, message, err) {
         console.error(message, err);
         res.status(500).json({ error: message });
     }
 
-
     handleSuccess(res, message, data = {}) {
         res.status(200).json({ message, ...data });
     }
-
 
     getAll(req, res) {
         db.query(`SELECT * FROM ${this.tableName}`, (err, results) => {
@@ -33,7 +30,6 @@ class GenericController {
         });
     }
 
-    // Método para obter um registro pelo ID
     getById(req, res) {
         const id = req.params.id;
         const idColumn = this.tableName === 'Colaboradores' ? 'id_colaboradores' : 'id';
@@ -46,7 +42,6 @@ class GenericController {
             }
         });
     }
-
 
     async create(req, res) {
         const data = req.body;
@@ -63,7 +58,6 @@ class GenericController {
         }
     }
 
-
     update(req, res) {
         const id = req.params.id;
         const idColumn = this.tableName === 'Colaboradores' ? 'id_colaboradores' : 'id';
@@ -78,7 +72,6 @@ class GenericController {
         });
     }
 
-
     delete(req, res) {
         const id = req.params.id;
         const idColumn = this.tableName === 'Colaboradores' ? 'id_colaboradores' : 'id';
@@ -91,7 +84,6 @@ class GenericController {
             }
         });
     }
-
 
     insertData(tableName, data) {
         return new Promise((resolve, reject) => {
@@ -106,25 +98,26 @@ class GenericController {
         });
     }
 
-
     async handleColaboradores(data) {
         try {
-
+            // Inserção de dados relacionados ao colaborador
             data.id_endereco_fk = await this.insertData('Endereco', data.endereco);
             data.id_contato_fk = await this.insertData('Contato', data.contato);
             data.id_cargo_fk = await this.insertData('Cargos', data.cargo);
             data.id_plantao_fk = await this.insertData('Plantoes', data.plantao);
+            data.id_jornada_fk = await this.insertData('Jornadas', data.jornada); // Supondo que você também tem que inserir a jornada
 
-
+            // Removendo propriedades que não pertencem diretamente à tabela 'Colaboradores'
             delete data.endereco;
             delete data.contato;
             delete data.cargo;
             delete data.plantao;
+            delete data.jornada;
 
-
+            // Inserindo o colaborador na tabela 'Colaboradores'
             const colaboradorId = await this.insertData('Colaboradores', data);
 
-
+            // Registro automático de usuário
             await UsuariosController.registerAuto(colaboradorId, data.nome, data.cpf);
 
         } catch (err) {

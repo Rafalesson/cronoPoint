@@ -6,14 +6,11 @@ const baseUrl = 'http://localhost:5000/api';
 const dados = {
     tipo_contratacao: { descricao: 'Teste Contratação' },
     jornadas: {
-        id_sistema_externo: 'ext_teste',
         nome_jornada: 'Jornada Teste',
         seg: '1', ter: '1', qua: '1', qui: '1', sex: '1', sab: '0', dom: '0', flexivel: '1'
     },
-    tipo_plantao: { descricao: 'Teste Plantão' },
     tipo_ponto: { descricao: 'Teste Ponto' },
     responsabilidades: {
-        id_sistema_externo: 'ext_teste',
         descricao: 'Responsabilidade Teste'
     },
     tipo_debito_credito: { descricao: 'Teste Débito' },
@@ -26,34 +23,22 @@ const dados = {
         telefone_fixo: '111111111', telefone_celular: '999999999', aceita_sms: 1, aceita_whatsapp: 1, email: 'teste@teste.com'
     },
     cargos: {
-        id_sistema_externo: 'ext_teste', nome_cargo: 'Cargo Teste', nivel: 'Junior', autorizador: 1
+        nome_cargo: 'Cargo Teste', nivel: 'Junior', autorizador: 1
     },
     plantoes: {
-        id_sistema_externo: 'ext_teste', nome_plantao: 'Plantão Teste', id_tipo_plantao_fk: 1
+        nome_plantao: 'Plantão Teste'
     },
     clientes: {
-        id_sistema_externo: 'ext_teste', fantasia: 'Cliente Teste', razao_social: 'Razão Social Teste', horas_mensais: 160
+        fantasia: 'Cliente Teste', razao_social: 'Razão Social Teste', horas_mensais: 160
     },
     projetos: {
-        id_sistema_externo: 'ext_teste', nome_projeto: 'Projeto Teste', id_cliente_fk: 1,
+        nome_projeto: 'Projeto Teste', id_cliente_fk: 1,
         inicio: '2024-01-01', fim: '2024-12-31', horas_mensais: 160, horas_totais: 1920
     },
     colaboradores: {
-        id_sistema_folga: 'folga_teste', nome: 'Gabriel', cpf: '123', ativo: 1,
-        endereco: {
-            rua: 'Rua Teste', bairro: 'Bairro Teste', cidade: 'Cidade Teste', estado: 'Estado Teste',
-            pais: 'País Teste', numero_casa: 100, complemento: 'Apto Teste', cep: '00000-000'
-        },
-        contato: {
-            telefone_fixo: '111111111', telefone_celular: '999999999', aceita_sms: 1, aceita_whatsapp: 1, email: 'teste@teste.com'
-        },
-        cargo: {
-            id_sistema_externo: 'ext_teste', nome_cargo: 'Cargo Teste', nivel: 'Junior', autorizador: 1
-        },
-        plantao: {
-            id_sistema_externo: 'ext_teste', nome_plantao: 'Plantão Teste', id_tipo_plantao_fk: 1
-        },
-        id_tipo_contratacao_fk: 1, id_jornada_fk: 1, id_plantao_fk: 1, id_cerca_digital_fk: 1, id_responsabilidades_fk: 1
+        nome: 'Gabriel', cpf: '123456789', ativo: 1,
+        id_tipo_contratacao_fk: 1, id_jornada_fk: 1, id_cargo_fk: 1, id_plantao_fk: 1,
+        id_endereco_fk: 1, id_contato_fk: 1, id_responsabilidades_fk: 1
     },
     banco_de_horas: {
         id_colaborador_fk: 1, id_validador_fk: 1, data_hora_lancamento: '2024-01-01 08:00:00',
@@ -77,7 +62,15 @@ const dados = {
         data: '2024-01-01', hora: '08:00', id_tipo_ponto_fk: 1, localidade: 'Localidade Teste',
         id_colaborador_fk: 1, id_cliente_fk: 1, id_projeto_fk: 1
     },
-    plantao_colaborador: { id_plantao_fk: 1, id_colaborador_fk: 1, descricao: 'Teste Plantão Colaborador' }
+    colaborador_tipo_ponto: {
+        id_colaborador_fk: 1, id_tipo_ponto_fk: 1
+    },
+    colaborador_jornada: {
+        id_colaborador_fk: 1, id_jornada_fk: 1
+    },
+    colaborador_plantao: {
+        id_colaborador_fk: 1, id_plantao_fk: 1
+    }
 };
 
 // Função para inserir dados nas tabelas

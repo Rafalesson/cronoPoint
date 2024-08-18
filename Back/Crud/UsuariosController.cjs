@@ -11,7 +11,7 @@ class UsuariosController {
 
     async aprovarUsuario(id) {
         return new Promise((resolve, reject) => {
-            db.query(`UPDATE Usuarios SET status = 'aprovado' WHERE id_usuario = ?`, [id], (err, results) => {
+            db.query(`UPDATE ${this.tableName} SET status = 'aprovado' WHERE id_usuario = ?`, [id], (err, results) => {
                 if (err) {
                     console.error(`Erro ao aprovar usuário com ID ${id}:`, err);
                     reject(err);
@@ -24,7 +24,7 @@ class UsuariosController {
 
     async rejeitarUsuario(id) {
         return new Promise((resolve, reject) => {
-            db.query(`UPDATE Usuarios SET status = 'rejeitado' WHERE id_usuario = ?`, [id], (err, results) => {
+            db.query(`UPDATE ${this.tableName} SET status = 'rejeitado' WHERE id_usuario = ?`, [id], (err, results) => {
                 if (err) {
                     console.error(`Erro ao rejeitar usuário com ID ${id}:`, err);
                     reject(err);
@@ -117,8 +117,6 @@ class UsuariosController {
             res.status(200).json({ message: 'Login realizado com sucesso', token, id_colaborador: colaboradorId });
         });
     }
-
-
 
     update(req, res) {
         const id = req.params.id;
