@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const UsuariosController = require('./UsuariosController.cjs');
-const { authenticateToken, authorizeRole } = require('./authMiddleware.cjs'); // Importa os middlewares
-const db = require('./DB.cjs');
+const { authenticateToken, authorizeRole } = require('./authMiddleware.cjs');
 
 // Rota para aprovar usuário
 router.put('/usuarios/aprovar/:id', authenticateToken, authorizeRole('gestor'), async (req, res) => {

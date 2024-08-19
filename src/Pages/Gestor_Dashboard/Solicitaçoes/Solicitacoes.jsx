@@ -29,6 +29,46 @@ export default function Solicitacoes() {
         fetchPendenteUsers();
     }, []);
 
+    const handleAprovar = async (id) => {
+        try {
+            const token = localStorage.getItem('authToken');
+            const response = await fetch(`http://localhost:5000/api/usuarios/aprovar/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (response.ok) {
+                setPendenteUsers(pendenteUsers.filter(user => user.id_usuario !== id));
+            } else {
+                console.error('Erro ao aprovar usuário');
+            }
+        } catch (error) {
+            console.error('Erro ao aprovar usuário:', error);
+        }
+    };
+
+    const handleRejeitar = async (id) => {
+        try {
+            const token = localStorage.getItem('authToken');
+            const response = await fetch(`http://localhost:5000/api/usuarios/rejeitar/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (response.ok) {
+                setPendenteUsers(pendenteUsers.filter(user => user.id_usuario !== id));
+            } else {
+                console.error('Erro ao rejeitar usuário');
+            }
+        } catch (error) {
+            console.error('Erro ao rejeitar usuário:', error);
+        }
+    };
+
     if (loading) {
         return <p>Carregando usuários pendentes...</p>;
     }
