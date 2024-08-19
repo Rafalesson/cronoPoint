@@ -1,0 +1,115 @@
+.gestor-dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom-left-radius: 50% 10%;
+    border-bottom-right-radius: 50% 10%;
+}
+
+.header-content {
+    margin-top: 20px;
+}
+
+.time-info {
+    margin-top: 10px;
+}
+
+.time {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: block;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    width: 45%;
+    height: 100px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.card img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.card span {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.ponto-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ponto-btn {
+    width: 80%;
+    height: 60px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.ponto-btn img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.ponto-btn span {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.footer {
+    background-color: #007bff;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}

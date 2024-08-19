@@ -15,7 +15,7 @@ export default function Login({ onLoginSuccess }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrorMessage(""); // Reseta a mensagem de erro ao tentar fazer login
+        setErrorMessage("");
 
         try {
             const response = await fetch("http://localhost:5000/api/usuarios/login", {
@@ -42,6 +42,13 @@ export default function Login({ onLoginSuccess }) {
                     localStorage.setItem('colaboradorNome', colaboradorData.result.nome);
                     localStorage.setItem('cargo', data.cargo);
                     onLoginSuccess();
+
+                    // Redireciona com base no cargo
+                    if (data.cargo === "gestor") {
+                        navigate("/gestor-dashboard");
+                    } else {
+                        navigate("/dashboard");
+                    }
                 } else {
                     console.error("Colaborador não encontrado.");
                     setErrorMessage("Erro ao buscar informações do colaborador.");

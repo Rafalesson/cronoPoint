@@ -82,6 +82,35 @@ app.put('/api/usuarios/rejeitar/:id', authenticateToken, authorizeRole('gestor')
         res.status(500).json({ error: 'Erro ao rejeitar usuário' });
     }
 });
+// Endpoint para buscar todos os usuários com status 'pendente'
+app.get('/api/usuarios/pendentes', authenticateToken, authorizeRole('gestor'), async (req, res) => {
+    try {
+        const pendenteUsers = await UsuariosController.getPendenteUsers();
+
+        res.status(200).json(pendenteUsers);
+    } catch (err) {
+        console.error('Erro ao buscar usuários pendentes:', err);
+        res.status(500).json({ error: 'Erro ao buscar usuários pendentes' });
+    }
+});
+
+// No seu arquivo de rotas ou controller
+// Endpoint para buscar detalhes de um usuário específico
+app.get('/api/usuarios/:id', authenticateToken, authorizeRole('gestor'), async (req, res) => {
+    try {
+        const id = req.params.id;
+        const usuario = await UsuariosController.getById(id); // Supondo que existe um método getById no controlador
+        if (!usuario) {
+            return res.status(404).json({ error: 'Usuário não encontrado' });
+        }
+        res.json(usuario);
+    } catch (err) {
+        console.error('Erro ao buscar detalhes do usuário:', err);
+        res.status(500).json({ error: 'Erro ao buscar detalhes do usuário' });
+    }
+});
+
+
 
 // Inicia o servidor
 app.listen(PORT, () => {

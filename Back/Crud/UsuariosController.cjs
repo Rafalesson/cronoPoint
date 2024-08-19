@@ -18,6 +18,57 @@ class UsuariosController {
         return this.updateUserStatus(id, 'rejeitado');
     }
 
+
+    async getPendenteUsers() {
+        const query = `SELECT * FROM ${this.tableName} WHERE status = 'pendente'`;
+        return new Promise((resolve, reject) => {
+            db.query(query, (err, results) => {
+                if (err) {
+                    console.error('Erro ao buscar usuários pendentes:', err);
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+
+    async getByIdC(id) {
+        const query = `SELECT * FROM ${this.tableName} WHERE id_usuario = ?`;
+        return new Promise((resolve, reject) => {
+            db.query(query, [id], (err, results) => {
+                if (err) {
+                    console.error('Erro ao buscar usuário por ID:', err);
+                    reject(err);
+                } else {
+                    resolve(results[0]); // Supondo que o ID é único e vai retornar apenas um resultado
+                }
+            });
+        });
+    }
+    async getById(id) {
+        const query = `
+            SELECT u.*, c.nome, c.cpf, ct.telefone_celular, ct.telefone_fixo, ct.email AS contato_email, e.rua, e.numero_casa, e.bairro, e.cidade, e.estado, e.cep
+            FROM ${this.tableName} u
+            LEFT JOIN Colaboradores c ON u.id_colaborador = c.id_colaboradores
+            LEFT JOIN Endereco e ON c.id_endereco_fk = e.id_endereco
+            LEFT JOIN Contato ct ON c.id_contato_fk = ct.id_contato
+            WHERE u.id_usuario = ?
+        `;
+
+        return new Promise((resolve, reject) => {
+            db.query(query, [id], (err, results) => {
+                if (err) {
+                    console.error('Erro ao buscar usuário por ID:', err);
+                    reject(err);
+                } else {
+                    resolve(results[0]); // Supondo que o ID é único e vai retornar apenas um resultado
+                }
+            });
+        });
+    }
+
+
     async updateUserStatus(id, status) {
         const query = `UPDATE ${this.tableName} SET status = ? WHERE id_usuario = ?`;
         return new Promise((resolve, reject) => {
