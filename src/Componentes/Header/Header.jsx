@@ -1,27 +1,30 @@
-import React from "react";
-import "./header.css"
+import React, { useState } from 'react';
 import menuHamburger from "../../assets/img/menu-m.svg";
-import avatarPerfil from '../../assets/img/Avatars_Pack/Svg/Artboards_Diversity_Avatars_by_Netguru-10.svg';
+import MenuLateral from "./MenuLateral/MenuLateral.jsx";
+import avatarPerfil from "../../assets/img/Avatars_Pack/Svg/Artboards_Diversity_Avatars_by_Netguru-10.svg";
+import "./header.css"; // Adicionando um arquivo CSS para o Header
 
+export default function Header() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-export default function Header(){
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
-  return(
-      <header className="cabecalho">
-        <nav className="cabecalhoNav">
-          <button className="menuHamburguer">
-          <img src={menuHamburger} alt="Menu habúrguer" className="menuHamburguerIcon" />
+    return (
+        <>
+            <header className="cabecalho">
+                <nav className="cabecalhoNav">
+                    <button className="menuHamburguer" onClick={toggleMenu} aria-label="Abrir menu">
+                        <img src={menuHamburger} alt="Menu" />
+                    </button>
 
-          </button>
-
-          <h1 className="cabecalhoTitulo">
-            CRONO POINT
-          </h1>
-
-          <button className="avatar">
-            <img src={avatarPerfil} alt="Avatar" className="avatarIcon" />
-          </button>
-        </nav>
-      </header>
-  )
+                    <button className="avatar" aria-label="Perfil">
+                        <img src={avatarPerfil} alt="Avatar" className="avatarIcon"/>
+                    </button>
+                </nav>
+            </header>
+            {isMenuOpen && <MenuLateral toggleMenu={toggleMenu}/>}
+        </>
+    );
 }

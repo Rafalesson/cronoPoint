@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Footer from "../../Componentes/Footer/Footer";
 import iconeMulher from "../../assets/img/people_working_pack/SVG/character3.svg";
@@ -9,9 +10,12 @@ import "./login.css";
 export default function Login({ onLoginSuccess }) {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrorMessage(""); // Reseta a mensagem de erro ao tentar fazer login
 
         try {
             const response = await fetch("http://localhost:5000/api/usuarios/login", {
@@ -25,22 +29,35 @@ export default function Login({ onLoginSuccess }) {
             const data = await response.json();
 
             if (response.ok) {
-                // Faz a busca do colaborador após o login bem-sucedido
-                const colaboradorResponse = await fetch(`http://localhost:5000/api/colaboradores/${data.id_colaborador}`);
+                localStorage.setItem('authToken', data.token);
+
+                const colaboradorResponse = await fetch(`http://localhost:5000/api/colaboradores/${data.id_colaborador}`, {
+                    headers: {
+                        'Authorization': `Bearer ${data.token}`
+                    }
+                });
                 const colaboradorData = await colaboradorResponse.json();
 
-                if (colaboradorData && colaboradorData.result && colaboradorData.result.nome) {
+                if (colaboradorData && colaboradorData.result) {
                     localStorage.setItem('colaboradorNome', colaboradorData.result.nome);
+                    localStorage.setItem('cargo', data.cargo);
                     onLoginSuccess();
                 } else {
                     console.error("Colaborador não encontrado.");
+                    setErrorMessage("Erro ao buscar informações do colaborador.");
                 }
             } else {
                 console.error("Erro ao realizar login:", data.error);
+                setErrorMessage(data.error || "Erro ao realizar login. Verifique suas credenciais.");
             }
         } catch (error) {
             console.error("Erro ao realizar login:", error);
+            setErrorMessage("Erro de conexão. Tente novamente mais tarde.");
         }
+    };
+
+    const handleCadastroClick = () => {
+        navigate("/cadastro");
     };
 
     return (
@@ -79,6 +96,8 @@ export default function Login({ onLoginSuccess }) {
                     />
                 </div>
 
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
+
                 <button type="button" id="forgot">
                     Esqueceu a senha?
                 </button>
@@ -93,7 +112,7 @@ export default function Login({ onLoginSuccess }) {
                     <img src={linha} alt="Apenas uma linha" />
                 </div>
 
-                <button type="button" className="btn" id="cadastrar">
+                <button type="button" className="btn" id="cadastrar" onClick={handleCadastroClick}>
                     Cadastrar
                 </button>
 

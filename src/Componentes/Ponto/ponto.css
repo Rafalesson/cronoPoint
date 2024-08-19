@@ -4,8 +4,8 @@
   margin: 3rem auto 0 auto;
   background-color: var(--green-success);
   border-radius: 50%;
-  width: 25rem;
-  height: 25rem;
+  width: 20rem;
+  height: 20rem;
 }
 
 #baterPonto{
@@ -15,20 +15,20 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  width: 22rem;
-  height: 22rem;
+  width: 18rem;
+  height: 18rem;
   background-color: var(--white-background);
   border-radius: 50%;
 }
 
 #baterPontoIcon{
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
 }
 
 #baterPontoText{
   font-family: "Roboto", sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: var(--grey-neutral);
   font-weight: 500;
 }

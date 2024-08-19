@@ -1,4 +1,5 @@
 const mysql = require('mysql2/promise');
+require('dotenv').config();
 
 async function clearDatabase() {
     const connection = await mysql.createConnection({
@@ -10,23 +11,21 @@ async function clearDatabase() {
     });
 
     try {
-        const tables = [
-            // Tabelas que não existem no banco
-            'Colaboradores_Banco_de_Horas',
-            'Usuarios',
-
-            // Tabelas que dependem de outras
-            'Colaborador_Cerca_Digital',
+        const dependentTables = [
             'Colaborador_Tipo_Ponto',
-            'Plantao_Colaborador',
             'Ponto',
             'Suspensao',
             'Horas_Extras',
             'Ausencias',
             'Colaborador_Autorizante',
             'Banco_de_Horas',
+            'Colaborador_Jornada',
+            'Colaborador_Plantao',
+            'Colaborador_Cerca_Digital'
+        ];
 
-            // Tabelas principais
+        const parentTables = [
+            'Usuarios', // Adicionando a tabela Usuarios que depende de Colaboradores
             'Colaboradores',
             'Projetos',
             'Clientes',
@@ -38,12 +37,22 @@ async function clearDatabase() {
             'Tipo_Debito_Credito',
             'Responsabilidades',
             'Tipo_Ponto',
-            'Tipo_Plantao',
             'Jornadas',
             'Tipo_Contratacao'
         ];
 
-        for (const table of tables) {
+        // Excluindo dados das tabelas dependentes primeiro
+        for (const table of dependentTables) {
+            try {
+                await connection.query(`DELETE FROM ${table}`);
+                console.log(`Dados da tabela ${table} deletados com sucesso`);
+            } catch (err) {
+                console.error(`Erro ao deletar dados na tabela ${table}:`, err.message);
+            }
+        }
+
+        // Excluindo dados das tabelas principais
+        for (const table of parentTables) {
             try {
                 await connection.query(`DELETE FROM ${table}`);
                 console.log(`Dados da tabela ${table} deletados com sucesso`);

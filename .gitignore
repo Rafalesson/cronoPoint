@@ -7,10 +7,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependency directories
 node_modules
 dist
 dist-ssr
+
+# Local environment files
 *.local
+.env
 
 # Editor directories and files
 .vscode/*
@@ -22,5 +26,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.env
-.Back/Crud/tests
+
+# Ignorar arquivos de teste no diretório 'Back/Crud/tests'
+Back/Crud/tests/colabor.cjs
+Back/Crud/tests/delete.cjs
+Back/Crud/tests/tester.cjs

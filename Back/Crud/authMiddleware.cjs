@@ -1,30 +1,27 @@
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = '123';
+const SECRET_KEY = process.env.SECRET_KEY || '123';
+const db = require('./DB.cjs');
 
-const authenticateToken = (req, res, next) => {
+function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
 
-    if (token == null) return res.sendStatus(401);
+    if (!token) return res.sendStatus(401); // Sem token, não autorizado
 
     jwt.verify(token, SECRET_KEY, (err, user) => {
-        if (err) return res.sendStatus(403);
-
+        if (err) return res.sendStatus(403); // Token inválido, proibido
         req.user = user;
         next();
     });
-};
+}
 
-const authorizeRole = (roles) => {
+function authorizeRole(role) {
     return (req, res, next) => {
-        if (!roles.includes(req.user.cargo)) {
-            return res.sendStatus(403);
+        if (req.user?.cargo !== role) {
+            return res.sendStatus(403); // Sem permissão, proibido
         }
         next();
     };
-};
+}
 
-module.exports = {
-    authenticateToken,
-    authorizeRole
-};
+module.exports = { authenticateToken, authorizeRole };

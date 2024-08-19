@@ -1,10 +1,5 @@
 const db = require('./DB.cjs');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const UsuariosController = require('./UsuariosController.cjs');
-const { Router } = require("express");
-const router = Router();
-const SECRET_KEY = process.env.SECRET_KEY || '123'; // Use variáveis de ambiente para chaves secretas
+
 
 class GenericController {
     constructor(tableName) {
@@ -13,11 +8,117 @@ class GenericController {
 
     handleError(res, message, err) {
         console.error(message, err);
-        res.status(500).json({ error: message });
+        res.status(500).json({
+            error: message,
+            details: err?.message || 'Erro desconhecido'
+        });
     }
 
     handleSuccess(res, message, data = {}) {
         res.status(200).json({ message, ...data });
+    }
+
+    async tableExists(tableName) {
+        const query = `SHOW TABLES LIKE ?`;
+        return this.queryDB(query, [tableName])
+            .then(results => results.length > 0);
+    }
+
+    async columnExists(tableName, columnName) {
+        const query = `SHOW COLUMNS FROM ${tableName} LIKE ?`;
+        return this.queryDB(query, [columnName])
+            .then(results => results.length > 0);
+    }
+
+    async queryDB(sql, params) {
+        return new Promise((resolve, reject) => {
+            db.query(sql, params, (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+
+    async insertData(tableName, data) {
+        const columns = Object.keys(data).join(', ');
+        const values = Object.values(data);
+        const placeholders = values.map(() => '?').join(', ');
+
+        const sql = `INSERT INTO ${tableName} (${columns}) VALUES (${placeholders})`;
+        return this.queryDB(sql, values).then(results => results.insertId);
+    }
+
+    async create(req, res) {
+        const data = req.body;
+
+        try {
+            const tableExists = await this.tableExists(this.tableName);
+            if (!tableExists) {
+                throw new Error(`A tabela ${this.tableName} não existe no banco de dados`);
+            }
+
+            for (const column of Object.keys(data)) {
+                const columnExists = await this.columnExists(this.tableName, column);
+                if (!columnExists) {
+                    throw new Error(`A coluna '${column}' não existe na tabela ${this.tableName}`);
+                }
+            }
+
+            if (this.tableName === 'Colaboradores') {
+                const colaboradorId = await this.handleColaboradores(data);
+                this.handleSuccess(res, 'Colaborador inserido com sucesso', { id: colaboradorId });
+            } else {
+                const insertId = await this.insertData(this.tableName, data);
+                this.handleSuccess(res, 'Dados inseridos com sucesso', { id: insertId });
+            }
+        } catch (err) {
+            this.handleError(res, `Erro ao inserir dados na tabela ${this.tableName}`, err);
+        }
+    }
+
+    async handleColaboradores(data) {
+        try {
+            const tipoContratacaoExists = await this.verifyReferenceExists('crono_point.Tipo_Contratacao', 'id_tipo_contratacao', data.id_tipo_contratacao_fk);
+            if (!tipoContratacaoExists) {
+                throw new Error('Tipo de contratação não existe');
+            }
+
+            if (data.endereco) {
+                data.endereco.numero_casa = data.endereco.numero;  // Ajuste do nome da coluna
+                delete data.endereco.numero;
+                data.id_endereco_fk = await this.insertData('crono_point.Endereco', data.endereco);
+                delete data.endereco;
+            }
+
+            if (data.contato) {
+                data.id_contato_fk = await this.insertData('crono_point.Contato', data.contato);
+                delete data.contato;
+            }
+            if (data.cargo) {
+                data.id_cargo_fk = await this.insertData('crono_point.Cargos', data.cargo);
+                delete data.cargo;
+            }
+            if (data.jornada) {
+                data.id_jornada_fk = await this.insertData('crono_point.Jornadas', data.jornada);
+                delete data.jornada;
+            }
+
+            const colaboradorId = await this.insertData('crono_point.Colaboradores', data);
+            return colaboradorId;
+
+        } catch (err) {
+            console.error('Erro ao inserir colaborador:', err);
+            throw err;
+        }
+    }
+
+    async verifyReferenceExists(tableName, idColumn, idValue) {
+        const sql = `SELECT 1 FROM ${tableName} WHERE ${idColumn} = ? LIMIT 1`;
+        return this.queryDB(sql, [idValue])
+            .then(results => results.length > 0);
     }
 
     getAll(req, res) {
@@ -41,21 +142,6 @@ class GenericController {
                 this.handleSuccess(res, 'Dados buscados com sucesso', { result: results[0] });
             }
         });
-    }
-
-    async create(req, res) {
-        const data = req.body;
-
-        try {
-            if (this.tableName === 'Colaboradores') {
-                await this.handleColaboradores(data);
-            } else {
-                await this.insertData(this.tableName, data);
-            }
-            this.handleSuccess(res, 'Dados inseridos com sucesso');
-        } catch (err) {
-            this.handleError(res, `Erro ao inserir dados na tabela ${this.tableName}`, err);
-        }
     }
 
     update(req, res) {
@@ -83,47 +169,6 @@ class GenericController {
                 this.handleSuccess(res, 'Dados deletados com sucesso', { affectedRows: results.affectedRows });
             }
         });
-    }
-
-    insertData(tableName, data) {
-        return new Promise((resolve, reject) => {
-            db.query(`INSERT INTO ${tableName} SET ?`, data, (err, results) => {
-                if (err) {
-                    console.error(`Erro ao inserir dados na tabela ${tableName}:`, err);
-                    reject(err);
-                } else {
-                    resolve(results.insertId);
-                }
-            });
-        });
-    }
-
-    async handleColaboradores(data) {
-        try {
-            // Inserção de dados relacionados ao colaborador
-            data.id_endereco_fk = await this.insertData('Endereco', data.endereco);
-            data.id_contato_fk = await this.insertData('Contato', data.contato);
-            data.id_cargo_fk = await this.insertData('Cargos', data.cargo);
-            data.id_plantao_fk = await this.insertData('Plantoes', data.plantao);
-            data.id_jornada_fk = await this.insertData('Jornadas', data.jornada); // Supondo que você também tem que inserir a jornada
-
-            // Removendo propriedades que não pertencem diretamente à tabela 'Colaboradores'
-            delete data.endereco;
-            delete data.contato;
-            delete data.cargo;
-            delete data.plantao;
-            delete data.jornada;
-
-            // Inserindo o colaborador na tabela 'Colaboradores'
-            const colaboradorId = await this.insertData('Colaboradores', data);
-
-            // Registro automático de usuário
-            await UsuariosController.registerAuto(colaboradorId, data.nome, data.cpf);
-
-        } catch (err) {
-            console.error('Erro ao inserir colaborador:', err);
-            throw err;
-        }
     }
 }
 

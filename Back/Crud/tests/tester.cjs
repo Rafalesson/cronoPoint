@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+// Lista de URLs dos endpoints para serem testados
 const urls = [
     'http://localhost:5000/api/tipo_contratacao',
     'http://localhost:5000/api/jornadas',
@@ -25,15 +26,26 @@ const urls = [
     'http://localhost:5000/api/colaboradores_banco_de_horas'
 ];
 
+// Função para testar os endpoints
 const testEndpoints = async () => {
     for (const url of urls) {
         try {
             const response = await axios.get(url);
             console.log(`Success: ${url}`, response.data);
         } catch (error) {
-            console.error(`Error: ${url}`, error.response.data);
+            if (error.response) {
+                // Erros com resposta do servidor
+                console.error(`Error: ${url} - Status: ${error.response.status}, Data: ${JSON.stringify(error.response.data)}`);
+            } else if (error.request) {
+                // Erros que ocorreram ao fazer o pedido mas sem resposta
+                console.error(`Error: ${url} - Request made but no response received.`);
+            } else {
+                // Erros gerais que ocorreram ao configurar o pedido
+                console.error(`Error: ${url} - Message: ${error.message}`);
+            }
         }
     }
 };
 
+// Executa o teste dos endpoints
 testEndpoints();

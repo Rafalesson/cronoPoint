@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const UsuariosController = require('./UsuariosController.cjs');
+const { authenticateToken, authorizeRole } = require('./authMiddleware.cjs'); // Importa os middlewares
+const db = require('./DB.cjs');
 
-// Rota para aprovar um usuário
-router.put('/usuarios/aprovar/:id', async (req, res) => {
+// Rota para aprovar usuário
+router.put('/usuarios/aprovar/:id', authenticateToken, authorizeRole('gestor'), async (req, res) => {
     try {
         const id = req.params.id;
         const affectedRows = await UsuariosController.aprovarUsuario(id);
@@ -18,8 +20,8 @@ router.put('/usuarios/aprovar/:id', async (req, res) => {
     }
 });
 
-// Rota para rejeitar um usuário
-router.put('/usuarios/rejeitar/:id', async (req, res) => {
+// Rota para rejeitar usuário
+router.put('/usuarios/rejeitar/:id', authenticateToken, authorizeRole('gestor'), async (req, res) => {
     try {
         const id = req.params.id;
         const affectedRows = await UsuariosController.rejeitarUsuario(id);

@@ -1,4 +1,4 @@
-#login{
+#login {
   display: flex;
   flex-direction: column;
   background-color: var(--blue-primary);
@@ -6,31 +6,30 @@
   justify-content: center;
 }
 
-#containerImg{
+#containerImg {
   display: flex;
   justify-content: center;
   height: 18vh;
   position: relative;
 }
 
-.loginImg{
+.loginImg {
   width: 45%;
-
 }
 
-#loginImg1{
+#loginImg1 {
   position: absolute;
   top: 2rem;
   left: 2rem;
 }
 
-#loginImg2{
+#loginImg2 {
   position: absolute;
   top: 2rem;
   right: 2rem;
 }
 
-#loginForm{
+#loginForm {
   height: 82vh;
   background-color: var(--white-background);
   border-radius: 2rem 2rem 0 0;
@@ -42,47 +41,65 @@
   font-family: "Roboto", sans-serif;
 }
 
-#saudacao{
+#saudacao {
   display: flex;
   flex-direction: column;
   font-size: 3rem;
   margin-top: 12rem;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
-#saudacao strong{
+#saudacao strong {
   color: var(--blue-primary);
   font-weight: 500;
 }
 
-#formGroup1{
+#formGroup1, #formGroup2 {
   display: flex;
   flex-direction: column;
   width: 90%;
-  margin-top: 1rem;  
+  margin-top: 1rem;
 }
 
-#formGroup1 label, #formGroup2 label{
+#formGroup1 label, #formGroup2 label {
   font-size: 1.8rem;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
-#email, #senha{
+#errorMessage {
+  color: red;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+#errorMessage {
+  color: red;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+#errorMessage {
+  color: red;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+#errorMessage {
+  color: red;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+#email, #senha {
   padding: 1.5rem 1rem;
   border-radius: 1rem;
   font-size: 2rem;
   outline: none;
-  box-shadow:  1px 1px 5px var(--black-text);
+  box-shadow: 1px 1px 5px var(--black-text);
 }
 
-#formGroup2{
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-}
-
-#forgot{
+#forgot {
   align-self: flex-end;
   margin-right: 2.5rem;
   border-bottom: 1px solid var(--grey-neutral);
@@ -90,7 +107,7 @@
   font-size: 1.2rem;
 }
 
-.btn{
+.btn {
   width: 90%;
   height: 5rem;
   background-color: var(--blue-primary);
@@ -98,31 +115,49 @@
   border-radius: 1rem;
   font-size: 1.8rem;
   cursor: pointer;
-  box-shadow:  1px 1px 5px var(--black-text);
+  box-shadow: 1px 1px 5px var(--black-text);
 }
 
-#entrar{
+#entrar {
   margin-top: 1rem;
 }
 
-#cadastrar{
+#cadastrar {
   background-color: var(--grey-neutral);
 }
 
-#divisaoBtn{
+#divisaoBtn {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 2rem 2.5rem;
 }
 
-#divisaoBtn img{
+#divisaoBtn img {
   width: 45%;
   height: 1rem;
 }
 
-#divisaoBtn span{
+#divisaoBtn span {
   font-size: 1.8rem;
 }
 
+@media (max-width: 768px) {
+  #loginImg1, #loginImg2 {
+    top: 1rem;
+    width: 40%;
+  }
 
+  #saudacao {
+    margin-top: 10rem;
+    font-size: 2rem;
+  }
+
+  .btn {
+    font-size: 1.6rem;
+  }
+
+  #divisaoBtn {
+    margin: 1.5rem 2rem;
+  }
+}
