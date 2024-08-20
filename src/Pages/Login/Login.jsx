@@ -19,9 +19,9 @@ export default function Login(){
 
       <form action="/login" id="loginForm">
 
-      <p id="saudacao">
+      <h1 id="saudacao">
         Bem-vindo(a) ao <strong>Crono Point</strong>
-      </p>
+      </h1>
 
       <div id="formGroup1">
           <label htmlFor="email">Email:</label>

@@ -1,0 +1,207 @@
+#contaneirDP {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--blue-primary);
+  width: 100vw;
+  height: 100vh;
+}
+
+#cabecalhoDP {
+  display: flex;
+  width: 100%;
+  height: 25%;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+#voltarBtn {
+  cursor: pointer;
+  width: 50%;
+  height: 3rem;
+}
+
+#voltarBtnImg {
+  width: 3rem;
+  height: 2rem;
+  transform: scale(1.5); 
+}
+
+#voltarBtnImg path {
+  fill: var(--white-background);
+}
+
+#caracterDP {
+  width: 40%;
+  height: auto;
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+}
+
+#cabecalhoText {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 2.5rem;
+  width: 50%;
+  align-self: center;
+  color: var(--white-background);
+  padding-right: 1rem;
+}
+
+#dadosPessoais{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 75%;
+  background-color: var(--white-background);
+  border-radius: 1.2rem 1.2rem 0 0;
+  box-shadow: 1px 1px 5px var(--black-text);
+}
+
+#tituloDP{
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  align-self: flex-end;
+  margin-right: 2rem;
+  color: var(--grey-neutral);
+}
+
+#containerCampos{
+  width: 90%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  font-family: "Roboto", sans-serif;
+}
+
+#dob{
+  width: 50%;
+}
+
+.form-group label{
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding-left: 1rem;
+}
+
+.form-group input{
+  outline: none;
+  background-color: #fff;
+  border-radius: 1rem;
+  height: 4rem;
+  font-size: 2rem;
+  box-shadow: 0 1px 2px var(--black-text);
+  padding-left: 1rem;
+}
+
+.required{
+  color: var(--orange-alert);
+}
+
+.button-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  height: 15%;
+}
+
+.button{
+  width: 45%;
+  height: 4rem;
+  font-size: 1.7rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: var(--white-background);
+}
+
+#cancel-button{
+  background-color: var(--orange-alert);
+}
+
+#submit-button{
+  background-color: var(--blue-primary);
+}
+
+/* Estilizando o contêiner do calendário */
+.react-datepicker {
+  font-family: 'Roboto', sans-serif;
+  background-color: #ffffff;
+  border: 1px solid var(--grey-neutral);
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 20rem;
+}
+
+/* Cabeçalho do calendário */
+.react-datepicker__header {
+  background-color: var(--blue-primary);
+  border-bottom: none;
+  color: var(--white-background);
+  width: 20rem;
+}
+
+/* Texto do mês e ano no cabeçalho */
+.react-datepicker__current-month {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: var(--white-background);
+}
+
+/* Dias da semana */
+.react-datepicker__day-name {
+  color: var(--white-background);
+  font-weight: bold;
+}
+
+/* Dias do calendário */
+.react-datepicker__day {
+  color: var(--blue-primary);
+  font-size: 1.2rem;
+  padding: 2px;
+}
+
+/* Dia selecionado */
+.react-datepicker__day--selected {
+  background-color: var(--blue-primary);
+  color: var(--white-background);
+  border-radius: 3px;
+  padding: 2px;
+}
+
+/* Dia atual */
+.react-datepicker__day--today {
+  background-color: var(--grey-neutral);
+  color: var(--white-background);
+  border-radius: 3px;
+  padding: 2px;
+}
+
+/* Setas de navegação */
+.react-datepicker__navigation {
+  top: 10px;
+  line-height: 1.5rem;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: white;
+}
+
+/* Contêiner de semanas */
+.react-datepicker__week {
+  margin: 0.2rem 0;
+}
