@@ -32,11 +32,11 @@
 }
 
 #caracterDP {
-  width: 40%;
+  width: 45%;
   height: auto;
   position: absolute;
   top: 2rem;
-  left: 3rem;
+  left: 2rem;
 }
 
 #cabecalhoText {
@@ -100,7 +100,7 @@
   outline: none;
   background-color: #fff;
   border-radius: 1rem;
-  height: 4rem;
+  height: 5rem;
   font-size: 2rem;
   box-shadow: 0 1px 2px var(--black-text);
   padding-left: 1rem;
@@ -144,7 +144,7 @@
   border: 1px solid var(--grey-neutral);
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 20rem;
+  width: 25rem;
 }
 
 /* Cabeçalho do calendário */
@@ -152,7 +152,7 @@
   background-color: var(--blue-primary);
   border-bottom: none;
   color: var(--white-background);
-  width: 20rem;
+  width: 25rem;
 }
 
 /* Texto do mês e ano no cabeçalho */
@@ -166,13 +166,16 @@
 .react-datepicker__day-name {
   color: var(--white-background);
   font-weight: bold;
+  padding: 3px;
+  font-size: 1.1rem;
 }
 
 /* Dias do calendário */
 .react-datepicker__day {
   color: var(--blue-primary);
-  font-size: 1.2rem;
-  padding: 2px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 3px;
 }
 
 /* Dia selecionado */
