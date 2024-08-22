@@ -1,0 +1,86 @@
+#acessoContainer{
+  background-color: var(--blue-primary);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#cabecalhoAcesso{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 25vh;
+  position: relative;
+}
+
+#btnX{
+  padding: 2rem;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+#acessoText{
+  color: var(--white-background);
+  font-size: 3rem;
+  position: relative;
+  right: 40%;
+}
+
+#acessoImg{
+  width: 30%;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+#acessoCampos{
+  background-color: var(--white-background);
+  width: 100%;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#acessoForm{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 90%;
+}
+
+
+#formLabel{
+  font-size: 1.7rem;
+  align-self: flex-start;
+}
+
+#senha, #email{
+  height: 6rem;
+  box-sizing: border-box;
+  font-size: 2rem;
+}
+
+#formActions{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.formBtn{
+  cursor: pointer;
+}
+
+#finalizarBtn{
+  width: 100%;
+  background-color: var(--blue-primary);
+  font-size: 2rem;
+}
+
+#btnVoltar{
+  width: 100%;
+  background-color: var(--orange-alert);
+  font-size: 2rem;
+}
